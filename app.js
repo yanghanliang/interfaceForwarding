@@ -1,14 +1,8 @@
 // 引入express 第三方包
 const express = require('express')
-const http = require("http");
 
 // 引入获取数据的第三方包(post)
 const bodyParser = require('body-parser')
-
-// axios 请求
-const axios = require('axios')
-
-const fs = require('fs');
 
 // 创建 app 对象
 const app = express()

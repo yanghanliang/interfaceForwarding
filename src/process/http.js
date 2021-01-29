@@ -22,5 +22,6 @@ module.exports.$http = async (req, res) =>{
     }
 
     console.log(postData, 'postData')
-    return await axios(postData)
+    const { data } = await axios(postData)
+    return data;
 }
