@@ -1,7 +1,8 @@
 const axios = require('axios')
+const Global = require('../plugins/global')
 
 module.exports.$http = async (req, res) =>{
-    console.log(req.originalUrl, 'req.originalUrl')
+    console.log(req.originalUrl, 'req.originalUrl', Global)
     const params = {
         data: req.body,
         params: req.body,
@@ -11,7 +12,7 @@ module.exports.$http = async (req, res) =>{
     }
     let postData = {
         method: req.method,
-        url: `http://localhost:3001${req.originalUrl}`,
+        url: Global.interfaceBaseUrl + req.originalUrl,
     }
 
     for (const key in params) {

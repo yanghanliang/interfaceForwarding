@@ -9,9 +9,14 @@
 + 支持 get、post、put、delete方法,也可以到src\router\data.js中添加你需要的请求方式
 + 支持图片的跨域请求,其他文件暂时未支持，可自行拓展
 
+
 ### 开发|运行
 
 #### 1. clone 此项目
 #### 2. yarn 安装包
 #### 3. nodemon app | node app.js 启动项目
+
+### 修改转发接口地址
+
+`src\plugins\global.js`
 
