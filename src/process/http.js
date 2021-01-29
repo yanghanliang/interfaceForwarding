@@ -7,6 +7,7 @@ module.exports.$http = async (req, res) =>{
         data: req.body,
         params: req.body,
         query: req.query,
+        withCredentials: true,
         // 如果不设置这个的话，图片是受损的 json || default
         responseType: req.headers['sec-fetch-dest'] === 'image' ? 'arraybuffer' : ''
     }
