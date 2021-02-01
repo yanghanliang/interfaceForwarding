@@ -1,4 +1,5 @@
 const axios = require('axios')
+const https = require('https')
 const Global = require('../plugins/global')
 
 module.exports.$http = async (req, res) =>{
@@ -14,6 +15,9 @@ module.exports.$http = async (req, res) =>{
     let postData = {
         method: req.method,
         url: Global.interfaceBaseUrl + req.originalUrl,
+        httpsAgent: new https.Agent({  
+            rejectUnauthorized: false
+        })
     }
 
     for (const key in params) {
@@ -22,6 +26,8 @@ module.exports.$http = async (req, res) =>{
             postData[key] = item
         }
     }
+
+
 
     console.log(postData, 'postData')
     const { data } = await axios(postData)

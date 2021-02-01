@@ -15,6 +15,7 @@ router.get('*', async (req, res) => {
 router.post('*', async (req, res) => {
     console.log('post')
     const data = await $http(req, res)
+    // console.log(data, 'gggg')
     res.send(data)
 })
 

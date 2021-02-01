@@ -4,6 +4,8 @@ const express = require('express')
 // 引入获取数据的第三方包(post)
 const bodyParser = require('body-parser')
 
+var cors = require('cors')
+
 // 创建 app 对象
 const app = express()
 
@@ -11,16 +13,24 @@ const router = require('./src/router/index')
 
 // 提供跨域(CORS)
 const allowCrossDomain = function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*')
+    res.header('Access-Control-Allow-Origin', 'http://localhost:8080')
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
     res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization')
-    // res.header('Access-Control-Allow-Headers', 'application/x-www-form-urlencoded,Origin,X-Requested-With,Content-Type,Accept,Authorization,token')
+    res.header('Access-Control-Allow-Headers', 'application/x-www-form-urlencoded,Origin,X-Requested-With,Content-Type,Accept,Authorization,token')
     res.header('Access-Control-Allow-Credentials','true')
     next()
 }
 
 // 使用跨域设置
 app.use(allowCrossDomain)
+
+
+app.use(cors({
+    // origin不能设置为*，设置为*时与credentials为true不兼容
+    origin: 'http://localhost:8080',
+    credentials: true, // Access-Control-Allow-Credentials 需指定为true
+    alloweHeaders:['Content-Type','Authorization'],  //指定header
+}));
 
 // 使用第三方包获取参数
 // 编码问题(请求报文中Content-Type: application/json;charset=UTF-8时需加)
